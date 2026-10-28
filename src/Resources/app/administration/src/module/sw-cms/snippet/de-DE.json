@@ -1,0 +1,16 @@
+{
+    "sw-cms": {
+        "elements": {
+            "mgd-slider": {
+                "label": "MGD Super-Slider",
+                "preAlpha": "Pre-Alpha: Dieses Element ist noch ein Platzhalter.",
+                "sliderLabel": "Slider",
+                "sliderPlaceholder": "Slider auswählen ...",
+                "noSliders": "Es gibt noch keine Slider.",
+                "loadError": "Die Slider konnten nicht geladen werden.",
+                "managementHint": "Sliderverwaltung folgt in 0.2.0",
+                "previewEmpty": "Kein Slider gewählt"
+            }
+        }
+    }
+}

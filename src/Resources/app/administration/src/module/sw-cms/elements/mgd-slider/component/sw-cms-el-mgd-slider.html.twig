@@ -1,0 +1,14 @@
+{% block sw_cms_element_mgd_slider %}
+    <div class="sw-cms-el-mgd-slider">
+        {% block sw_cms_element_mgd_slider_label %}
+            <strong>{{ $tc('sw-cms.elements.mgd-slider.label') }}</strong>
+        {% endblock %}
+
+        {% block sw_cms_element_mgd_slider_state %}
+            <p v-if="sliderId">{{ sliderId }}</p>
+            <p v-else>{{ $tc('sw-cms.elements.mgd-slider.previewEmpty') }}</p>
+        {% endblock %}
+
+        <small>{{ $tc('sw-cms.elements.mgd-slider.preAlpha') }}</small>
+    </div>
+{% endblock %}

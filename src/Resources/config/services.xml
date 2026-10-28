@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Slider speichern / laden (Limit serverseitig) -->
+        <service id="Mgd\Slider\Service\SliderService">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+
+        <!-- Prime Kandidaten aus dem Product Repo -->
+        <service id="Mgd\Slider\Service\PrimeCandidates">
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="Shopware\Core\System\Currency\CurrencyFormatter"/>
+            <argument type="service" id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface"/>
+        </service>
+
+        <!-- HTML Block aus Renderer -->
+        <service id="Mgd\Slider\Service\SliderHtml">
+            <argument type="service" id="Mgd\Slider\Service\SliderService"/>
+            <argument type="service" id="Mgd\Slider\Service\PrimeCandidates"/>
+        </service>
+
+        <!-- CMS Element mgd-slider -->
+        <service id="Mgd\Slider\DataResolver\MgdSliderCmsElementResolver">
+            <argument type="service" id="Mgd\Slider\Service\SliderHtml"/>
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <!-- Admin API für den Dropdown -->
+        <service id="Mgd\Slider\Controller\SliderAdminController" public="true">
+            <argument type="service" id="Mgd\Slider\Service\SliderService"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+    </services>
+</container>

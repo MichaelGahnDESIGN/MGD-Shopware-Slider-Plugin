@@ -1,0 +1,30 @@
+{% block sw_cms_element_mgd_slider_config %}
+    <div class="sw-cms-el-config-mgd-slider">
+        {% block sw_cms_element_mgd_slider_config_hint %}
+            <sw-alert variant="info" :closable="false">
+                {{ $tc('sw-cms.elements.mgd-slider.preAlpha') }}
+            </sw-alert>
+        {% endblock %}
+
+        {% block sw_cms_element_mgd_slider_config_select %}
+            <sw-single-select
+                :label="$tc('sw-cms.elements.mgd-slider.sliderLabel')"
+                :placeholder="$tc('sw-cms.elements.mgd-slider.sliderPlaceholder')"
+                :options="sliders"
+                value-property="id"
+                label-property="name"
+                :value="element.config.sliderId.value"
+                @update:value="onSliderChange">
+            </sw-single-select>
+        {% endblock %}
+
+        {% block sw_cms_element_mgd_slider_config_messages %}
+            <p v-if="loadFailed">{{ $tc('sw-cms.elements.mgd-slider.loadError') }}</p>
+            <p v-else-if="sliders.length === 0">{{ $tc('sw-cms.elements.mgd-slider.noSliders') }}</p>
+        {% endblock %}
+
+        {% block sw_cms_element_mgd_slider_config_todo %}
+            <p><small>{{ $tc('sw-cms.elements.mgd-slider.managementHint') }}</small></p>
+        {% endblock %}
+    </div>
+{% endblock %}

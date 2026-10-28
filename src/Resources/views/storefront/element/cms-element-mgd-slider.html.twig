@@ -1,0 +1,16 @@
+{% block element_mgd_slider %}
+    {# Slider-Block kommt fertig aus MGD\Slider\Renderer (escaped), darum raw #}
+    {% set mgdHtml = element.data.html|default('') %}
+
+    {% if mgdHtml is not empty %}
+        {% block element_mgd_slider_assets %}
+            {# CSS/JS aus public/ des Plugins - Init ist doppelt-sicher (data-mgd-ready) #}
+            <link rel="stylesheet" href="{{ asset('bundles/mgdslider/css/mgd-slider.css', 'asset') }}">
+            <script src="{{ asset('bundles/mgdslider/js/mgd-slider.js', 'asset') }}" defer></script>
+        {% endblock %}
+
+        {% block element_mgd_slider_inner %}
+            {{ mgdHtml|raw }}
+        {% endblock %}
+    {% endif %}
+{% endblock %}
