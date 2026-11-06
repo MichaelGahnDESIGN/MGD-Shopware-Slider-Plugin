@@ -1,4 +1,4 @@
-// CMS Element mgd-slider (Pre-Alpha Stub)
+// CMS Element mgd-slider
 import './module/sw-cms/elements/mgd-slider';
 
 // Snippets aus module/sw-cms/snippet

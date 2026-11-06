@@ -1,37 +1,102 @@
-# MGD Shopware 6 Slider Plugin
+# MGD Slider für Shopware 6
 
-> Pre-Alpha 0.1.0. Das Plugin ist ein frühes Gerüst. Es ist noch nicht für echte Shops gedacht.
+**Pre-Release 0.1.0.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal). In der MGD-Demo-Shop-Installation ist es **noch nicht** getestet. Bitte noch nicht in einem echten Shop einsetzen.
 
-Ein "Super-Slider" für Shopware 6 von Michael Gahn DESIGN. Zwei Arten:
+## Was ist das?
 
-- **Klassisch:** Du legst Slides selbst an (nur Bild oder Bild mit Text und Button).
-- **Prime:** Die Slides entstehen automatisch aus deinen Shop-Artikeln. Du stellst nur ein, wie viele Slides es sein sollen. Quelle: zufällig, meistverkauft, Kategorie oder manuell (du wählst Artikel, daraus wird zufällig gezeigt).
+Ein Slider (Bilder zum Durchblättern) für die Erlebniswelten in Shopware. Es gibt zwei Arten:
 
-In der kostenlosen Version kannst du bis zu 5 Slider anlegen. Mit einer Pro-Lizenz sind es unbegrenzt viele.
+- **Klassisch:** Du legst die Slides selbst an. Jede Slide hat ein Bild. Text und Button sind freiwillig.
+- **Prime:** Die Slides entstehen von allein aus den Artikeln deines Shops. Du sagst nur, wie viele (1 bis 12) und welche Quelle: zufällig oder meistverkauft.
 
-## Was schon geht und was nicht
+In der kostenlosen Version darfst du **5 Slider** anlegen. Beim sechsten kommt die Meldung: "Das Limit von 5 Slidern ist erreicht." Eine Pro-Version mit unbegrenzten Slidern ist geplant. Die Lizenz-Prüfung gibt es in diesem Release noch nicht.
 
-- ☑️ Nur Syntax geprüft (php -l). Noch nie in einer echten Shopware-Instanz gelaufen.
-- ☑️ Enthalten: Plugin-Klasse, Tabelle, Limit-Prüfung, CMS-Element (Platzhalter), Prime-Abfrage über das Produkt-Repository (ungetestet).
-- ☑️ Noch offen: Verwaltung im Admin (Liste, Slides), Vorschau, Rechteprüfung, Storefront-Texte.
+## Das brauchst du
+
+- Shopware 6.7
+- Zugang zum Server (Terminal), um das Plugin zu installieren
 
 ## Installation, Schritt für Schritt
 
-1. Plugin-Ordner nach `custom/plugins/MgdSlider` kopieren.
-2. Im Terminal: `bin/console plugin:refresh`, dann `bin/console plugin:install --activate MgdSlider`.
-3. `bin/console cache:clear` und `bin/console assets:install`.
-4. In den Erlebniswelten das Element "MGD Slider" einfügen. (Pre-Alpha: noch ungetestet)
+1. ZIP von der Release-Seite laden (Datei `MgdSlider-0.1.0.zip`).
+2. Prüfsumme prüfen (siehe unten). So weißt du, dass die Datei echt ist.
+3. ZIP entpacken. Es entsteht der Ordner `MgdSlider`.
+4. Ordner nach `custom/plugins/MgdSlider` im Shop kopieren.
+5. Im Shop-Ordner diese Befehle nacheinander ausführen:
 
-## Slider-Regeln für Barrierefreiheit
+```
+bin/console plugin:refresh
+bin/console plugin:install --activate MgdSlider
+bin/console assets:install
+bin/console theme:compile
+bin/console cache:clear
+```
 
-- Es gibt einen Pausenknopf, sobald sich der Slider von selbst bewegt.
-- Bedienung mit Tastatur: Pfeiltasten links und rechts, Pos1 und Ende.
-- Wer "Bewegung reduzieren" im System eingestellt hat, bekommt keinen automatischen Wechsel.
-- Keine externen Schriften und kein CDN: Alles liegt im Plugin (Datenschutz).
+6. Bei einem Update später zusätzlich: `bin/console plugin:update MgdSlider`.
 
-## Aufbau (Kurzfassung)
+### Prüfsumme prüfen
 
-Der Kern (Slider-Skript, Stil, Auswahl-Logik) ist auf allen Plattformen gleich und wird aus einem gemeinsamen Quellordner erzeugt. Nur die Anbindung an Shopware 6 ist je Plattform anders. Den ganzen Plan gibt es im privaten Hauptprojekt (docs/SLIDER-PLUGINS.md).
+Auf dem Mac oder Linux: `shasum -a 256 MgdSlider-0.1.0.zip`. Die Zahl muss gleich der Zahl in der Datei `MgdSlider-0.1.0.zip.sha256` sein.
+
+## Slider anlegen
+
+### Variante A: Im Admin (Erlebniswelten)
+
+⚠️ Dieses Formular ist **nicht getestet**. Der Admin-Code ist im Plugin, aber das fertige Admin-Paket (Build) fehlt im ZIP. Du musst es selbst erzeugen: `bin/build-administration.sh` im Shop-Ordner, danach `bin/console cache:clear`. In unserem Test hat der Admin-Build nicht sauber durchgelaufen. Der Weg über die Konsole (Variante B) ist getestet.
+
+1. Erlebniswelt öffnen und das Element "MGD Super-Slider" einfügen.
+2. Element anklicken. Unten steht "Neuen Slider anlegen".
+3. Name eintragen, Art wählen (Klassisch oder Prime) und auf "Slider anlegen" klicken.
+4. Bei Klassisch: Bild-Adresse (URL) pro Slide eintragen. Das Bild muss im Netz oder im Shop liegen, zum Beispiel `/media/...`.
+5. Der neue Slider ist danach schon im Element ausgewählt. Erlebniswelt speichern.
+
+### Variante B: Per Konsole
+
+```
+bin/console mgd:slider:create "Mein Prime Slider" --mode=prime --prime-source=bestseller --prime-count=6
+bin/console mgd:slider:create "Mein Slider" --config-file=slider.json
+bin/console mgd:slider:list
+bin/console mgd:slider:delete <ID>
+```
+
+Die Datei `slider.json` enthält die Einstellungen. Beispiel:
+
+```
+{"autoplay": true, "interval": 4000, "slides": [
+  {"image": "/media/bild1.jpg", "alt": "Beschreibung", "title": "Überschrift", "buttonLabel": "Mehr", "buttonUrl": "/"}
+]}
+```
+
+## Barrierefreiheit
+
+- Bedienung mit der Tastatur: Pfeil links/rechts, Pos1 und Ende. Alle Knöpfe sind mit Tab erreichbar.
+- Wechselt der Slider von selbst, gibt es einen Pause-Knopf.
+- Wer im System "Bewegung reduzieren" eingestellt hat, bekommt keinen automatischen Wechsel.
+- Auf dem Handy gibt es Wischen statt Pfeile.
+- Keine externen Schriften, kein CDN. Alles liegt im Plugin.
+
+## Was geprüft wurde und was nicht
+
+Geprüft (lokal, Shopware 6.7.2.2 in Docker):
+
+- Installieren und aktivieren, Tabelle wird angelegt.
+- Slider Klassisch und Prime werden im Shop angezeigt (breit und schmal im Browser).
+- Limit 5: der sechste wird abgelehnt (Konsole und API).
+- Tastatur, Pause-Knopf, "Bewegung reduzieren" (letzteres mit simulierter Einstellung).
+- Automatische Tests: `php tests/run.php` und `node --test tests/`.
+
+**Nicht geprüft / noch offen:**
+
+- Die MGD-Demo-Shopware (dort fehlt uns der Server-Zugang für Shopware).
+- Das Admin-Formular zum Anlegen (Build und Bedienung ungetestet). Das Element selbst wurde im Admin-Editor einmal geladen und zeigt die Slider-Auswahl.
+- Slider im Admin bearbeiten oder löschen (kommt in 0.2.0, bis dahin Konsole).
+- Bilder aus der Shopware-Medienverwaltung auswählen (aktuell nur Bild-Adresse).
+- Pro-Lizenz und Lizenz-Prüfung.
+- Screenreader-Test mit echtem Gerät.
+
+## Deinstallation
+
+`bin/console plugin:uninstall MgdSlider` löscht auch die Slider-Daten. Willst du die Daten behalten: `bin/console plugin:uninstall MgdSlider --keep-user-data`.
 
 ## Hilfe und Fehler melden
 

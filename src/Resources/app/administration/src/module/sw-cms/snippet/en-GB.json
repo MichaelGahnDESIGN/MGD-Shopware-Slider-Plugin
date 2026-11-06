@@ -3,13 +3,35 @@
         "elements": {
             "mgd-slider": {
                 "label": "MGD Super Slider",
-                "preAlpha": "Pre-alpha: this element is still a placeholder.",
+                "preAlpha": "Pre-release 0.1.0: you can create sliders here, editing is not available yet.",
                 "sliderLabel": "Slider",
                 "sliderPlaceholder": "Select slider ...",
-                "noSliders": "There are no sliders yet.",
+                "noSliders": "There are no sliders yet. Create the first one below.",
                 "loadError": "The sliders could not be loaded.",
-                "managementHint": "Slider management follows in 0.2.0",
-                "previewEmpty": "No slider selected"
+                "managementHint": "Edit or delete sliders: later (0.2.0), until then via console (mgd:slider:list / mgd:slider:delete).",
+                "previewEmpty": "No slider selected",
+                "counter": "Created: {count} of {max} (free version)",
+                "newTitle": "Create new slider",
+                "newName": "Name",
+                "newMode": "Type",
+                "modeClassic": "Classic (own slides)",
+                "modePrime": "Prime (slides created automatically from shop products)",
+                "primeSource": "Product source",
+                "sourceRandom": "Random",
+                "sourceBestseller": "Best sellers",
+                "primeCount": "Number of slides (1 to 12)",
+                "autoplay": "Change automatically (with pause button)",
+                "slideImage": "Image address (URL)",
+                "slideAlt": "Image description (alt text)",
+                "slideTitle": "Headline",
+                "slideText": "Text",
+                "slideButtonLabel": "Button text",
+                "slideButtonUrl": "Button link",
+                "slideRemove": "Remove slide",
+                "slideAdd": "Add slide",
+                "create": "Create slider",
+                "created": "Slider created and selected.",
+                "createError": "Could not create the slider."
             }
         }
     }

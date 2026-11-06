@@ -8,3 +8,5 @@ vendor/
 *.sha256
 .idea/
 .vscode/
+
+src/Resources/public/administration/

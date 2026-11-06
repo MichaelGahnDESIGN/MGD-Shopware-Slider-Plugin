@@ -1,6 +1,6 @@
 {
     "name": "mgd/slider",
-    "description": "MGD Super-Slider für Shopware 6 (Pre-Alpha)",
+    "description": "MGD Super-Slider für Shopware 6 (Pre-Release)",
     "type": "shopware-platform-plugin",
     "version": "0.1.0",
     "license": "proprietary",
@@ -25,8 +25,8 @@
             "en-GB": "MGD Super Slider"
         },
         "description": {
-            "de-DE": "Slider für Einkaufswelten: Bild-Slides und Prime-Slider mit Artikeln aus dem Shop. Pre-Alpha.",
-            "en-GB": "Slider for shopping experiences: image slides and Prime slider with products from the shop. Pre-alpha."
+            "de-DE": "Slider für Einkaufswelten: Bild-Slides und Prime-Slider mit Artikeln aus dem Shop. Pre-Release.",
+            "en-GB": "Slider for shopping experiences: image slides and Prime slider with products from the shop. Pre-release."
         },
         "manufacturerLink": {
             "de-DE": "https://michael-gahn.de",

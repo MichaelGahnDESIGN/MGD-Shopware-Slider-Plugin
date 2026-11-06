@@ -11,7 +11,7 @@ use MGD\Slider\Limits;
 use Shopware\Core\Framework\Uuid\Uuid;
 
 /**
- * Slider anlegen / laden. Direkt per DBAL auf mgd_slider (ungetestet, Pre-Alpha).
+ * Slider anlegen / laden. Direkt per DBAL auf mgd_slider.
  */
 class SliderService
 {
@@ -32,17 +32,23 @@ class SliderService
      */
     public function create(string $name, array $rawConfig = []): string
     {
-        if (!Limits::canCreate($this->count())) {
-            throw new SliderLimitReachedException();
-        }
+        // Sperre damit zwei gleichzeitige Anlegen nicht am Limit vorbei kommen
+        $this->connection->fetchOne("SELECT GET_LOCK('mgd_slider_create', 5)");
+        try {
+            if (!Limits::canCreate($this->count())) {
+                throw new SliderLimitReachedException();
+            }
 
-        $id = Uuid::randomHex();
-        $this->connection->insert('mgd_slider', [
-            'id' => Uuid::fromHexToBytes($id),
-            'name' => Config::text($name, 255) ?: 'Slider',
-            'config' => json_encode(Config::normalize($rawConfig), JSON_THROW_ON_ERROR),
-            'created_at' => $this->now(),
-        ]);
+            $id = Uuid::randomHex();
+            $this->connection->insert('mgd_slider', [
+                'id' => Uuid::fromHexToBytes($id),
+                'name' => Config::text($name, 255) ?: 'Slider',
+                'config' => json_encode(Config::normalize($rawConfig), JSON_THROW_ON_ERROR),
+                'created_at' => $this->now(),
+            ]);
+        } finally {
+            $this->connection->fetchOne("SELECT RELEASE_LOCK('mgd_slider_create')");
+        }
 
         return $id;
     }

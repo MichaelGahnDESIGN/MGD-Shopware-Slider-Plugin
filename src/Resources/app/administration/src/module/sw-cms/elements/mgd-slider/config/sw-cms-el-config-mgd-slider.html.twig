@@ -21,6 +21,67 @@
         {% block sw_cms_element_mgd_slider_config_messages %}
             <p v-if="loadFailed">{{ $tc('sw-cms.elements.mgd-slider.loadError') }}</p>
             <p v-else-if="sliders.length === 0">{{ $tc('sw-cms.elements.mgd-slider.noSliders') }}</p>
+            <p v-else class="mgd-counter">{{ counterText }}</p>
+        {% endblock %}
+
+        {% block sw_cms_element_mgd_slider_config_new %}
+            <h4>{{ $tc('sw-cms.elements.mgd-slider.newTitle') }}</h4>
+
+            <sw-text-field
+                v-model:value="form.name"
+                :label="$tc('sw-cms.elements.mgd-slider.newName')">
+            </sw-text-field>
+
+            <sw-single-select
+                v-model:value="form.mode"
+                :label="$tc('sw-cms.elements.mgd-slider.newMode')"
+                :options="modeOptions">
+            </sw-single-select>
+
+            <sw-switch-field
+                v-model:value="form.autoplay"
+                :label="$tc('sw-cms.elements.mgd-slider.autoplay')">
+            </sw-switch-field>
+
+            <template v-if="form.mode === 'prime'">
+                <sw-single-select
+                    v-model:value="form.source"
+                    :label="$tc('sw-cms.elements.mgd-slider.primeSource')"
+                    :options="sourceOptions">
+                </sw-single-select>
+
+                <sw-number-field
+                    v-model:value="form.count"
+                    :label="$tc('sw-cms.elements.mgd-slider.primeCount')"
+                    :min="1"
+                    :max="12">
+                </sw-number-field>
+            </template>
+
+            <template v-else>
+                <fieldset v-for="(slide, index) in form.slides" :key="index" class="mgd-slide-row">
+                    <legend>Slide {{ index + 1 }}</legend>
+                    <sw-text-field v-model:value="slide.image" :label="$tc('sw-cms.elements.mgd-slider.slideImage')"></sw-text-field>
+                    <sw-text-field v-model:value="slide.alt" :label="$tc('sw-cms.elements.mgd-slider.slideAlt')"></sw-text-field>
+                    <sw-text-field v-model:value="slide.title" :label="$tc('sw-cms.elements.mgd-slider.slideTitle')"></sw-text-field>
+                    <sw-text-field v-model:value="slide.text" :label="$tc('sw-cms.elements.mgd-slider.slideText')"></sw-text-field>
+                    <sw-text-field v-model:value="slide.buttonLabel" :label="$tc('sw-cms.elements.mgd-slider.slideButtonLabel')"></sw-text-field>
+                    <sw-text-field v-model:value="slide.buttonUrl" :label="$tc('sw-cms.elements.mgd-slider.slideButtonUrl')"></sw-text-field>
+                    <sw-button size="small" @click="removeSlide(index)">
+                        {{ $tc('sw-cms.elements.mgd-slider.slideRemove') }}
+                    </sw-button>
+                </fieldset>
+                <sw-button size="small" @click="addSlide">
+                    {{ $tc('sw-cms.elements.mgd-slider.slideAdd') }}
+                </sw-button>
+            </template>
+
+            <p v-if="createError" class="mgd-error" role="alert">{{ createError }}</p>
+            <p v-if="createdOk" role="status">{{ $tc('sw-cms.elements.mgd-slider.created') }}</p>
+
+            <sw-button variant="primary" :disabled="creating" @click="createSlider">
+                {{ $tc('sw-cms.elements.mgd-slider.create') }}
+            </sw-button>
         {% endblock %}
 
         {% block sw_cms_element_mgd_slider_config_todo %}

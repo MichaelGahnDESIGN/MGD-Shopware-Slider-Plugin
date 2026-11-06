@@ -3,13 +3,35 @@
         "elements": {
             "mgd-slider": {
                 "label": "MGD Super-Slider",
-                "preAlpha": "Pre-Alpha: Dieses Element ist noch ein Platzhalter.",
+                "preAlpha": "Pre-Release 0.1.0: Slider anlegen geht hier, bearbeiten noch nicht.",
                 "sliderLabel": "Slider",
                 "sliderPlaceholder": "Slider auswählen ...",
-                "noSliders": "Es gibt noch keine Slider.",
+                "noSliders": "Es gibt noch keine Slider. Lege unten den ersten an.",
                 "loadError": "Die Slider konnten nicht geladen werden.",
-                "managementHint": "Sliderverwaltung folgt in 0.2.0",
-                "previewEmpty": "Kein Slider gewählt"
+                "managementHint": "Slider bearbeiten oder löschen: später (0.2.0), bis dahin per Konsole (mgd:slider:list / mgd:slider:delete).",
+                "previewEmpty": "Kein Slider gewählt",
+                "counter": "Angelegt: {count} von {max} (kostenlose Version)",
+                "newTitle": "Neuen Slider anlegen",
+                "newName": "Name",
+                "newMode": "Art",
+                "modeClassic": "Klassisch (eigene Slides)",
+                "modePrime": "Prime (Slides automatisch aus Shop-Artikeln)",
+                "primeSource": "Artikel-Quelle",
+                "sourceRandom": "Zufällig",
+                "sourceBestseller": "Meistverkauft",
+                "primeCount": "Anzahl Slides (1 bis 12)",
+                "autoplay": "Automatisch wechseln (mit Pausenknopf)",
+                "slideImage": "Bild-Adresse (URL)",
+                "slideAlt": "Bildbeschreibung (Alt-Text)",
+                "slideTitle": "Überschrift",
+                "slideText": "Text",
+                "slideButtonLabel": "Button-Text",
+                "slideButtonUrl": "Button-Link",
+                "slideRemove": "Slide entfernen",
+                "slideAdd": "Slide hinzufügen",
+                "create": "Slider anlegen",
+                "created": "Slider angelegt und ausgewählt.",
+                "createError": "Anlegen hat nicht geklappt."
             }
         }
     }

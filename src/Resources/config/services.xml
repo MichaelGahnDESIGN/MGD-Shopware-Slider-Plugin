@@ -28,6 +28,20 @@
             <tag name="shopware.cms.data_resolver"/>
         </service>
 
+        <!-- CLI Befehle -->
+        <service id="Mgd\Slider\Command\SliderCreateCommand">
+            <argument type="service" id="Mgd\Slider\Service\SliderService"/>
+            <tag name="console.command"/>
+        </service>
+        <service id="Mgd\Slider\Command\SliderListCommand">
+            <argument type="service" id="Mgd\Slider\Service\SliderService"/>
+            <tag name="console.command"/>
+        </service>
+        <service id="Mgd\Slider\Command\SliderDeleteCommand">
+            <argument type="service" id="Mgd\Slider\Service\SliderService"/>
+            <tag name="console.command"/>
+        </service>
+
         <!-- Admin API für den Dropdown -->
         <service id="Mgd\Slider\Controller\SliderAdminController" public="true">
             <argument type="service" id="Mgd\Slider\Service\SliderService"/>

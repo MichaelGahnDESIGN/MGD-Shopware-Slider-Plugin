@@ -14,10 +14,13 @@ use Shopware\Core\Content\Cms\DataResolver\ResolverContext\ResolverContext;
 
 /**
  * CMS Element mgd-slider: Config liefert die Slider-Id, HTML kommt aus SliderHtml.
- * Ungetestet (Pre-Alpha).
+ * 
  */
 class MgdSliderCmsElementResolver extends AbstractCmsElementResolver
 {
+    // damit CSS/JS pro Seite nur einmal eingebunden wird
+    private bool $assetsDone = false;
+
     public function __construct(private readonly SliderHtml $sliderHtml)
     {
     }
@@ -44,8 +47,11 @@ class MgdSliderCmsElementResolver extends AbstractCmsElementResolver
             return;
         }
 
-        $slot->setData(new MgdSliderStruct(
-            $this->sliderHtml->render($sliderId, $resolverContext->getSalesChannelContext())
-        ));
+        $html = $this->sliderHtml->render($sliderId, $resolverContext->getSalesChannelContext());
+        $first = !$this->assetsDone && $html !== '';
+        if ($html !== '') {
+            $this->assetsDone = true;
+        }
+        $slot->setData(new MgdSliderStruct($html, $first));
     }
 }
