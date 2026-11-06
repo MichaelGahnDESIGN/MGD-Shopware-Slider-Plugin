@@ -1,10 +1,18 @@
 # Änderungen
 
+## 0.1.1 (Pre-Release)
+
+- Das gebaute Admin-Paket ist jetzt im ZIP (0.1.0 hatte es nicht). Gebaut in einer sauberen Umgebung (Shopware 6.7.2.2).
+- Admin-Formular lokal getestet: Klassisch-Slider anlegen geht, beim 6. Slider kommt die deutsche Limit-Meldung.
+- Zähler "Angelegt: x / 5" im Formular korrigiert.
+- Hinweistexte ohne Versionsnummer.
+- Weiter offen: Demo-Shopware (kein Zugang), Bearbeiten im Admin, Pro-Lizenz.
+
 ## 0.1.0 (Pre-Release)
 
 - Läuft in Shopware 6.7.2.2 (lokal getestet): installieren, Slider Klassisch und Prime im Shop anzeigen.
 - Neu: Konsolen-Befehle `mgd:slider:create`, `mgd:slider:list`, `mgd:slider:delete`.
-- Neu: Admin-Formular im Erlebniswelten-Element zum Anlegen (Klassisch mit Slides, Prime mit Quelle und Anzahl). UNGETESTET, das gebaute Admin-Paket liegt nicht im ZIP (siehe README).
+- Neu: Admin-Formular im Erlebniswelten-Element zum Anlegen (Klassisch mit Slides, Prime mit Quelle und Anzahl). In 0.1.0 ohne gebautes Admin-Paket, ab 0.1.1 enthalten.
 - Neu: Admin-API zum Löschen, Rechteprüfung für die Admin-API.
 - Limit von 5 Slidern (Free) wird auf dem Server geprüft, mit deutscher Meldung. Sperre gegen gleichzeitiges Anlegen.
 - CSS und JS werden pro Seite nur einmal geladen.

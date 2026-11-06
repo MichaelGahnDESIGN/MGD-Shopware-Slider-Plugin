@@ -3,14 +3,14 @@
         "elements": {
             "mgd-slider": {
                 "label": "MGD Super-Slider",
-                "preAlpha": "Pre-Release 0.1.0: Slider anlegen geht hier, bearbeiten noch nicht.",
+                "preAlpha": "Pre-Release: Slider anlegen geht hier, bearbeiten noch nicht.",
                 "sliderLabel": "Slider",
                 "sliderPlaceholder": "Slider auswählen ...",
                 "noSliders": "Es gibt noch keine Slider. Lege unten den ersten an.",
                 "loadError": "Die Slider konnten nicht geladen werden.",
                 "managementHint": "Slider bearbeiten oder löschen: später (0.2.0), bis dahin per Konsole (mgd:slider:list / mgd:slider:delete).",
                 "previewEmpty": "Kein Slider gewählt",
-                "counter": "Angelegt: {count} von {max} (kostenlose Version)",
+                "counter": "Angelegt (kostenlose Version):",
                 "newTitle": "Neuen Slider anlegen",
                 "newName": "Name",
                 "newMode": "Art",

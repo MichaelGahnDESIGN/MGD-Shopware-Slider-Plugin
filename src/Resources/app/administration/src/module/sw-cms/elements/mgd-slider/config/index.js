@@ -46,9 +46,7 @@ Shopware.Component.register('sw-cms-el-config-mgd-slider', {
 
         // Zähler Text (Platzhalter selbst ersetzen, $tc mit Plural macht hier Quatsch)
         counterText() {
-            return this.$tc('sw-cms.elements.mgd-slider.counter')
-                .replace('{count}', String(this.sliders.length))
-                .replace('{max}', String(this.max));
+            return `${this.$tc('sw-cms.elements.mgd-slider.counter')} ${this.sliders.length} / ${this.max}`;
         },
 
         modeOptions() {

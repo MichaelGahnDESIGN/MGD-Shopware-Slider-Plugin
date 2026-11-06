@@ -3,14 +3,14 @@
         "elements": {
             "mgd-slider": {
                 "label": "MGD Super Slider",
-                "preAlpha": "Pre-release 0.1.0: you can create sliders here, editing is not available yet.",
+                "preAlpha": "Pre-release: you can create sliders here, editing is not available yet.",
                 "sliderLabel": "Slider",
                 "sliderPlaceholder": "Select slider ...",
                 "noSliders": "There are no sliders yet. Create the first one below.",
                 "loadError": "The sliders could not be loaded.",
                 "managementHint": "Edit or delete sliders: later (0.2.0), until then via console (mgd:slider:list / mgd:slider:delete).",
                 "previewEmpty": "No slider selected",
-                "counter": "Created: {count} of {max} (free version)",
+                "counter": "Created (free version):",
                 "newTitle": "Create new slider",
                 "newName": "Name",
                 "newMode": "Type",

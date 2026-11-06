@@ -1,6 +1,6 @@
 # MGD Slider für Shopware 6
 
-**Pre-Release 0.1.0.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal). In der MGD-Demo-Shop-Installation ist es **noch nicht** getestet. Bitte noch nicht in einem echten Shop einsetzen.
+**Pre-Release 0.1.1.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal). In der MGD-Demo-Shop-Installation ist es **noch nicht** getestet. Bitte noch nicht in einem echten Shop einsetzen.
 
 ## Was ist das?
 
@@ -18,7 +18,7 @@ In der kostenlosen Version darfst du **5 Slider** anlegen. Beim sechsten kommt d
 
 ## Installation, Schritt für Schritt
 
-1. ZIP von der Release-Seite laden (Datei `MgdSlider-0.1.0.zip`).
+1. ZIP von der Release-Seite laden (Datei `MgdSlider-0.1.1.zip`).
 2. Prüfsumme prüfen (siehe unten). So weißt du, dass die Datei echt ist.
 3. ZIP entpacken. Es entsteht der Ordner `MgdSlider`.
 4. Ordner nach `custom/plugins/MgdSlider` im Shop kopieren.
@@ -36,16 +36,16 @@ bin/console cache:clear
 
 ### Prüfsumme prüfen
 
-Auf dem Mac oder Linux: `shasum -a 256 MgdSlider-0.1.0.zip`. Die Zahl muss gleich der Zahl in der Datei `MgdSlider-0.1.0.zip.sha256` sein.
+Auf dem Mac oder Linux: `shasum -a 256 MgdSlider-0.1.1.zip`. Die Zahl muss gleich der Zahl in der Datei `MgdSlider-0.1.1.zip.sha256` sein.
 
 ## Slider anlegen
 
 ### Variante A: Im Admin (Erlebniswelten)
 
-⚠️ Dieses Formular ist **nicht getestet**. Der Admin-Code ist im Plugin, aber das fertige Admin-Paket (Build) fehlt im ZIP. Du musst es selbst erzeugen: `bin/build-administration.sh` im Shop-Ordner, danach `bin/console cache:clear`. In unserem Test hat der Admin-Build nicht sauber durchgelaufen. Der Weg über die Konsole (Variante B) ist getestet.
+Das gebaute Admin-Paket liegt im ZIP. Du musst nichts bauen.
 
 1. Erlebniswelt öffnen und das Element "MGD Super-Slider" einfügen.
-2. Element anklicken. Unten steht "Neuen Slider anlegen".
+2. Auf das Zahnrad am Element klicken (Element-Einstellungen). Dort steht "Neuen Slider anlegen".
 3. Name eintragen, Art wählen (Klassisch oder Prime) und auf "Slider anlegen" klicken.
 4. Bei Klassisch: Bild-Adresse (URL) pro Slide eintragen. Das Bild muss im Netz oder im Shop liegen, zum Beispiel `/media/...`.
 5. Der neue Slider ist danach schon im Element ausgewählt. Erlebniswelt speichern.
@@ -82,13 +82,13 @@ Geprüft (lokal, Shopware 6.7.2.2 in Docker):
 - Installieren und aktivieren, Tabelle wird angelegt.
 - Slider Klassisch und Prime werden im Shop angezeigt (breit und schmal im Browser).
 - Limit 5: der sechste wird abgelehnt (Konsole und API).
+- Admin-Formular: Slider (Klassisch) anlegen und die Limit-Meldung beim 6. Slider. Prime anlegen im Formular und Speichern der Erlebniswelt habe ich nicht im Browser durchgeklickt (Prime per Konsole/API geprüft).
 - Tastatur, Pause-Knopf, "Bewegung reduzieren" (letzteres mit simulierter Einstellung).
 - Automatische Tests: `php tests/run.php` und `node --test tests/`.
 
 **Nicht geprüft / noch offen:**
 
 - Die MGD-Demo-Shopware (dort fehlt uns der Server-Zugang für Shopware).
-- Das Admin-Formular zum Anlegen (Build und Bedienung ungetestet). Das Element selbst wurde im Admin-Editor einmal geladen und zeigt die Slider-Auswahl.
 - Slider im Admin bearbeiten oder löschen (kommt in 0.2.0, bis dahin Konsole).
 - Bilder aus der Shopware-Medienverwaltung auswählen (aktuell nur Bild-Adresse).
 - Pro-Lizenz und Lizenz-Prüfung.

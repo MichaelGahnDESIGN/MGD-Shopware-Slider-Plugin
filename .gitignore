@@ -9,4 +9,4 @@ vendor/
 .idea/
 .vscode/
 
-src/Resources/public/administration/
+.smbdelete*
