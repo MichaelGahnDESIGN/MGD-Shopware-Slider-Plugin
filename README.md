@@ -1,6 +1,6 @@
 # MGD Slider für Shopware 6
 
-**Pre-Release 0.1.1.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal). In der MGD-Demo-Shop-Installation ist es **noch nicht** getestet. Bitte noch nicht in einem echten Shop einsetzen.
+**Pre-Release 0.1.1.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal) und in der MGD-Demo-Shopware (6.7.15.1). Bitte trotzdem noch nicht in einem echten Shop einsetzen.
 
 ## Was ist das?
 
@@ -77,7 +77,9 @@ Die Datei `slider.json` enthält die Einstellungen. Beispiel:
 
 ## Was geprüft wurde und was nicht
 
-Geprüft (lokal, Shopware 6.7.2.2 in Docker):
+Geprüft in der MGD-Demo-Shopware (6.7.15.1, PHP 8.4): Installieren und aktivieren, Slider Klassisch und Prime per Konsole anlegen, Anzeige im Browser breit und schmal, Tastatur und Pause-Knopf beim Klassisch-Slider, Limit 5 (der 6. wird abgelehnt). Das Update eines schon installierten Plugins (`plugin:update`) wurde dort nicht geprüft.
+
+Zusätzlich geprüft (lokal, Shopware 6.7.2.2 in Docker):
 
 - Installieren und aktivieren, Tabelle wird angelegt.
 - Slider Klassisch und Prime werden im Shop angezeigt (breit und schmal im Browser).
@@ -88,7 +90,6 @@ Geprüft (lokal, Shopware 6.7.2.2 in Docker):
 
 **Nicht geprüft / noch offen:**
 
-- Die MGD-Demo-Shopware (dort fehlt uns der Server-Zugang für Shopware).
 - Slider im Admin bearbeiten oder löschen (kommt in 0.2.0, bis dahin Konsole).
 - Bilder aus der Shopware-Medienverwaltung auswählen (aktuell nur Bild-Adresse).
 - Pro-Lizenz und Lizenz-Prüfung.

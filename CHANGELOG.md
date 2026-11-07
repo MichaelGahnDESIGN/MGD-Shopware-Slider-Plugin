@@ -6,7 +6,8 @@
 - Admin-Formular lokal getestet: Klassisch-Slider anlegen geht, beim 6. Slider kommt die deutsche Limit-Meldung.
 - Zähler "Angelegt: x / 5" im Formular korrigiert.
 - Hinweistexte ohne Versionsnummer.
-- Weiter offen: Demo-Shopware (kein Zugang), Bearbeiten im Admin, Pro-Lizenz.
+- In der MGD-Demo-Shopware (6.7.15.1) installiert und geprüft: Klassisch und Prime im Browser (breit und schmal), Tastatur, Pause-Knopf, Limit 5.
+- Weiter offen: Bearbeiten im Admin, Pro-Lizenz, plugin:update in der Demo.
 
 ## 0.1.0 (Pre-Release)
 
