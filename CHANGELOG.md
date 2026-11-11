@@ -1,5 +1,11 @@
 # Änderungen
 
+## 0.1.2 (Pre-Release)
+
+- Wartungs-Release. Am Slider selbst hat sich nichts geändert.
+- Mit `plugin:update` in der MGD-Demo-Shopware eingespielt. Damit ist der Update-Weg in der Demo jetzt geprüft.
+- Tests: `tests/run.php` und `tests/slider.test.js` grün.
+
 ## 0.1.1 (Pre-Release)
 
 - Das gebaute Admin-Paket ist jetzt im ZIP (0.1.0 hatte es nicht). Gebaut in einer sauberen Umgebung (Shopware 6.7.2.2).
