@@ -1,5 +1,11 @@
 # Änderungen
 
+## 1.4.0
+
+- Neue Versionsnummer 1.4.0: Alle MGD-Produkte haben jetzt die gleiche Version.
+- Slider-Kern abgeglichen: Button-Höhe korrigiert, Beschriftungen der Knöpfe lassen sich übersetzen (sonst Deutsch).
+- Pro-Lizenz und Update-Kanal: gibt es noch nicht.
+
 ## 0.1.2 (Pre-Release)
 
 - Wartungs-Release. Am Slider selbst hat sich nichts geändert.

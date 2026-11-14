@@ -1,6 +1,6 @@
 # MGD Slider für Shopware 6
 
-**Pre-Release 0.1.2.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal) und in der MGD-Demo-Shopware (6.7.15.1). Bitte trotzdem noch nicht in einem echten Shop einsetzen.
+**Release 1.4.0.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal) und in der MGD-Demo-Shopware (6.7.15.1). Bitte trotzdem noch nicht in einem echten Shop einsetzen.
 
 ## Was ist das?
 
@@ -18,7 +18,7 @@ In der kostenlosen Version darfst du **5 Slider** anlegen. Beim sechsten kommt d
 
 ## Installation, Schritt für Schritt
 
-1. ZIP von der Release-Seite laden (Datei `MgdSlider-0.1.2.zip`).
+1. ZIP von der Release-Seite laden (Datei `MgdSlider-1.4.0.zip`).
 2. Prüfsumme prüfen (siehe unten). So weißt du, dass die Datei echt ist.
 3. ZIP entpacken. Es entsteht der Ordner `MgdSlider`.
 4. Ordner nach `custom/plugins/MgdSlider` im Shop kopieren.
@@ -36,7 +36,7 @@ bin/console cache:clear
 
 ### Prüfsumme prüfen
 
-Auf dem Mac oder Linux: `shasum -a 256 MgdSlider-0.1.2.zip`. Die Zahl muss gleich der Zahl in der Datei `MgdSlider-0.1.2.zip.sha256` sein.
+Auf dem Mac oder Linux: `shasum -a 256 MgdSlider-1.4.0.zip`. Die Zahl muss gleich der Zahl in der Datei `MgdSlider-1.4.0.zip.sha256` sein.
 
 ## Slider anlegen
 
@@ -90,7 +90,7 @@ Zusätzlich geprüft (lokal, Shopware 6.7.2.2 in Docker):
 
 **Nicht geprüft / noch offen:**
 
-- Slider im Admin bearbeiten oder löschen (kommt in 0.2.0, bis dahin Konsole).
+- Slider im Admin bearbeiten oder löschen (kommt später, bis dahin Konsole).
 - Bilder aus der Shopware-Medienverwaltung auswählen (aktuell nur Bild-Adresse).
 - Pro-Lizenz und Lizenz-Prüfung.
 - Screenreader-Test mit echtem Gerät.
