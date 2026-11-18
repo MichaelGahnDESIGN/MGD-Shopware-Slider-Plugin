@@ -1,5 +1,12 @@
 # Änderungen
 
+## 1.5.0
+
+- Neu: Install-Meldung (Free-Lizenz). Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar in den Einstellungen.
+- Gemeldet wird beim Installieren, Aktivieren und Aktualisieren, danach täglich per geplanter Aufgabe. Ohne Shop-Cron passiert das beim Öffnen der Administration.
+- Schalter „Installation bei Michael Gahn DESIGN melden“ in den Plugin-Einstellungen, ab Werk an. Abgeschaltet wird der Eintrag auf der Plattform gelöscht.
+- Der Slider läuft immer voll weiter, auch ohne Plattform.
+
 ## 1.4.0
 
 - Neue Versionsnummer 1.4.0: Alle MGD-Produkte haben jetzt die gleiche Version.
