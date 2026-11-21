@@ -55,11 +55,23 @@ final class InstallPing
     // Schalter aus Einstellungen > Client (aus = Eintrag auf Plattform wird gelöscht)
     private function syncSwitch(InstallClient $ic): void
     {
-        $on = $this->config->get(self::SWITCH_KEY);
-        $on = $on === null ? true : (bool) $on;
+        $on = self::isOn($this->config->get(self::SWITCH_KEY));
         if ($on !== $ic->isEnabled()) {
             $ic->setEnabled($on);
         }
+    }
+
+    // null = ab Werk an, Konsole speichert evtl. Text "false"/"0"
+    public static function isOn(mixed $v): bool
+    {
+        if ($v === null) {
+            return true;
+        }
+        if (is_string($v)) {
+            return !in_array(strtolower(trim($v)), ['false', '0', 'off', 'no', ''], true);
+        }
+
+        return (bool) $v;
     }
 
     // erste Storefront-Domain, sonst APP_URL

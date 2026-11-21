@@ -1,5 +1,9 @@
 # Änderungen
 
+## 1.5.1
+
+- Fix: Der Schalter „Installation melden“ erkennt jetzt auch Werte, die per Konsole als Text gespeichert wurden („false“, „0“). Vorher hat „false“ als Text wie „an“ gewirkt.
+
 ## 1.5.0
 
 - Neu: Install-Meldung (Free-Lizenz). Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar in den Einstellungen.
