@@ -7,3 +7,6 @@ import enGB from './module/sw-cms/snippet/en-GB.json';
 
 Shopware.Locale.extend('de-DE', deDE);
 Shopware.Locale.extend('en-GB', enGB);
+
+// Baukasten Seite (Updates, Weitere Plugins, Installation melden) > src/Kit
+import '../../../../Kit/Platform/Shopware/administration/mgd-kit.js';

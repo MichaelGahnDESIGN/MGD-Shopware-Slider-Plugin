@@ -1,5 +1,15 @@
 # Änderungen
 
+## 1.6.0
+
+- Brückenversion: Das Plugin nutzt jetzt den gemeinsamen Baukasten von theme.michael-gahn.de (Ordner `src/Kit`).
+- Neue Admin-Seite unter Einstellungen > Erweiterungen > MGD Slider mit Info, Updates (Knopf „Jetzt aktualisieren“), Weitere Plugins und dem Schalter „Installation melden“.
+- Die Installation meldet sich bei Installieren, Aktivieren und Update, danach einmal am Tag über eine geplante Aufgabe. Beim Deinstallieren wird der Eintrag auf der Plattform gelöscht.
+- Ohne Shop-Cron meldet sich die Installation auch beim Öffnen der Administration (höchstens einmal am Tag).
+- Die alte eigene Meldung (Dienst, Aufgabe, Einstellungskarte) wird nicht mehr angemeldet. Die Dateien bleiben noch liegen und fliegen in der Endversion raus.
+- Nach dem Update: `bin/console cache:clear`, dann `bin/console scheduled-task:register`.
+- Der Slider selbst ist unverändert.
+
 ## 1.5.1
 
 - Fix: Der Schalter „Installation melden“ erkennt jetzt auch Werte, die per Konsole als Text gespeichert wurden („false“, „0“). Vorher hat „false“ als Text wie „an“ gewirkt.

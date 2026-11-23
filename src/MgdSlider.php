@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mgd\Slider;
 
 use Doctrine\DBAL\Connection;
-use Mgd\Slider\Service\InstallPing;
+use Mgd\Slider\Kit\Platform\Shopware\ShopwareKit;
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\ActivateContext;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
@@ -18,28 +18,34 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
  */
 class MgdSlider extends Plugin
 {
-    // Install-Meldung bei install / activate / update (Free-Lizenz)
+    // Anmeldung bei install / activate / update, darf nie scheitern (Baukasten kann null sein)
     public function install(InstallContext $installContext): void
     {
         parent::install($installContext);
-        $this->pingInstall();
+        $this->pingKit();
     }
 
     public function activate(ActivateContext $activateContext): void
     {
         parent::activate($activateContext);
-        $this->pingInstall();
+        $this->pingKit();
     }
 
     public function update(UpdateContext $updateContext): void
     {
         parent::update($updateContext);
-        $this->pingInstall();
+        $this->pingKit();
     }
 
     public function uninstall(UninstallContext $uninstallContext): void
     {
         parent::uninstall($uninstallContext);
+
+        // Abmelden bei theme.michael-gahn.de (immer), Baukasten-Daten nur bei "Daten löschen"
+        try {
+            ShopwareKit::forUninstall($uninstallContext, $this->container->get(SystemConfigService::class), 'mgd-slider-shopware')?->uninstall($uninstallContext);
+        } catch (\Throwable) {
+        }
 
         // Daten behalten wenn der Kunde das so wählt
         if ($uninstallContext->keepUserData()) {
@@ -50,12 +56,14 @@ class MgdSlider extends Plugin
         $connection->executeStatement('DROP TABLE IF EXISTS `mgd_slider`');
     }
 
-    // Lifecycle darf nie scheitern > alles abfangen, Dienste von Hand bauen (Plugin-Container noch nicht da)
-    private function pingInstall(): void
+    // Kit aus dem Container, beim ersten Install gibt es ihn evtl. noch nicht > dann macht es die tägliche Aufgabe
+    private function pingKit(): void
     {
         try {
-            $ping = new InstallPing($this->container->get(SystemConfigService::class), $this->container->get(Connection::class));
-            $ping->ping(true);
+            $kit = $this->container->has(ShopwareKit::class) ? $this->container->get(ShopwareKit::class) : null;
+            if ($kit instanceof ShopwareKit) {
+                $kit->installClient()?->ping(true);
+            }
         } catch (\Throwable) {
         }
     }
