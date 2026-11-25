@@ -22,19 +22,19 @@ class MgdSlider extends Plugin
     public function install(InstallContext $installContext): void
     {
         parent::install($installContext);
-        $this->pingKit();
+        $this->pingKit($installContext);
     }
 
     public function activate(ActivateContext $activateContext): void
     {
         parent::activate($activateContext);
-        $this->pingKit();
+        $this->pingKit($activateContext);
     }
 
     public function update(UpdateContext $updateContext): void
     {
         parent::update($updateContext);
-        $this->pingKit();
+        $this->pingKit($updateContext);
     }
 
     public function uninstall(UninstallContext $uninstallContext): void
@@ -56,14 +56,11 @@ class MgdSlider extends Plugin
         $connection->executeStatement('DROP TABLE IF EXISTS `mgd_slider`');
     }
 
-    // Kit aus dem Container, beim ersten Install gibt es ihn evtl. noch nicht > dann macht es die tägliche Aufgabe
-    private function pingKit(): void
+    // Meldung bei install / activate / update ueber den Baukasten, darf nie scheitern
+    private function pingKit(object $context): void
     {
         try {
-            $kit = $this->container->has(ShopwareKit::class) ? $this->container->get(ShopwareKit::class) : null;
-            if ($kit instanceof ShopwareKit) {
-                $kit->installClient()?->ping(true);
-            }
+            ShopwareKit::forLifecycle($context, $this->container->get(SystemConfigService::class), 'mgd-slider-shopware')?->installClient()?->ping(true);
         } catch (\Throwable) {
         }
     }
