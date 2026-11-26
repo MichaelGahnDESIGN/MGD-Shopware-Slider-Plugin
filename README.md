@@ -1,6 +1,6 @@
 # MGD Slider für Shopware 6
 
-**Release 2.1.1.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal) und in der MGD-Demo-Shopware (6.7.15.1). Bitte trotzdem noch nicht in einem echten Shop einsetzen.
+**Release 2.1.3.** Das Plugin läuft in einer Test-Shopware (6.7.2.2, lokal) und in der MGD-Demo-Shopware (6.7.15.1). Bitte trotzdem noch nicht in einem echten Shop einsetzen.
 
 ## Was ist das?
 
@@ -18,7 +18,7 @@ In der kostenlosen Version darfst du **5 Slider** anlegen. Beim sechsten kommt d
 
 ## Installation, Schritt für Schritt
 
-1. ZIP von der Release-Seite laden (Datei `MgdSlider-2.1.1.zip`).
+1. ZIP von der Release-Seite laden (Datei `MgdSlider-2.1.3.zip`).
 2. Prüfsumme prüfen (siehe unten). So weißt du, dass die Datei echt ist.
 3. ZIP entpacken. Es entsteht der Ordner `MgdSlider`.
 4. Ordner nach `custom/plugins/MgdSlider` im Shop kopieren.
@@ -36,7 +36,7 @@ bin/console cache:clear
 
 ### Prüfsumme prüfen
 
-Auf dem Mac oder Linux: `shasum -a 256 MgdSlider-2.1.1.zip`. Die Zahl muss gleich der Zahl in der Datei `MgdSlider-2.1.1.zip.sha256` sein.
+Auf dem Mac oder Linux: `shasum -a 256 MgdSlider-2.1.3.zip`. Die Zahl muss gleich der Zahl in der Datei `MgdSlider-2.1.3.zip.sha256` sein.
 
 ## Slider anlegen
 
@@ -102,6 +102,13 @@ Zusätzlich geprüft (lokal, Shopware 6.7.2.2 in Docker):
 ## Hilfe und Fehler melden
 
 Bitte als Issue in diesem Repository melden. Das ist keine Rechtsberatung: Die Lizenzfrage wird noch geprüft (siehe LICENSE).
+
+## MGD-Verwaltung: an- und ausschalten, Lizenz
+
+In der Administration unter **Einstellungen > Erweiterungen > MGD Slider** findest du die MGD-Seite des Plugins:
+
+- **Aktivieren / Deaktivieren:** Du kannst das Plugin dort an- oder ausschalten. Deine Slider bleiben dabei erhalten.
+- **Lizenz:** Hier steht, ob du die kostenlose Version (Free) nutzt. Eine Pro-Lizenz für den Slider gibt es noch nicht.
 
 ## Datenschutz
 
